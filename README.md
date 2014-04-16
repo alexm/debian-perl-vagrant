@@ -6,7 +6,7 @@ Playing with vagrant boxes for helping Debian Perl job.
 Warning!
 --------
 
-I'm afraig that the debian-sid.box file size is 1.3 GB. I know it
+I'm afraid that the debian-sid.box file size is 1.3 GB. I know it
 is too much for a minimal vagrant box, but the fact that there's
 no easy way to install sid from scratch makes it difficult to
 make it tinier. I'll keep trying.
@@ -72,6 +72,9 @@ Patching
     quilt edit path/to/file
     quilt fold < someone-elses-patch.diff
     quilt refresh
+    quilt pop
+    git add debian/patches
+    git commit
 
 Building
 --------
