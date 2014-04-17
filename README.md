@@ -56,7 +56,7 @@ Pushing
 
     vagrant ssh
     git config --global push.default simple
-    cd ~/src/pkg-perl/libfoo-bar-perl
+    cd ~/src/pkg-perl/packages/libfoo-bar-perl
     git status
     git log
     git remote -v
@@ -67,7 +67,7 @@ Patching
 --------
 
     vagrant ssh
-    cd ~/src/pkg-perl/libfoo-bar-perl
+    cd ~/src/pkg-perl/packages/libfoo-bar-perl
     quilt new fix-something.patch
     quilt edit path/to/file
     quilt fold < someone-elses-patch.diff
@@ -81,6 +81,6 @@ Building
 
     vagrant ssh
     sudo cowbuilder --create
-    cd ~/src/pkg-perl/libfoo-bar-perl
+    cd ~/src/pkg-perl/packages/libfoo-bar-perl
     pdebuild --pbuilder cowbuilder
 
