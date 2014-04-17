@@ -84,3 +84,10 @@ Building
     cd ~/src/pkg-perl/packages/libfoo-bar-perl
     pdebuild --pbuilder cowbuilder
 
+Reading
+-------
+
+* https://wiki.debian.org/Teams/DebianPerlGroup
+* https://wiki.debian.org/Teams/DebianPerlGroup/Welcome
+* http://pkg-perl.alioth.debian.org/git.html
+
