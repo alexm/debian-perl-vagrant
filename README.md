@@ -92,4 +92,6 @@ Reading
 * https://wiki.debian.org/Teams/DebianPerlGroup
 * https://wiki.debian.org/Teams/DebianPerlGroup/Welcome
 * http://pkg-perl.alioth.debian.org/git.html
+* http://pkg-perl.alioth.debian.org/howto/quilt.html
+* http://pkg-perl.alioth.debian.org/tips.html
 
