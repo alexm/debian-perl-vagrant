@@ -21,6 +21,7 @@ Starting
 
     git submodule update --init
     vagrant up --no-provision
+    vagrant ssh -c "sudo apt-get update"
     vagrant ssh -c "sudo apt-get install puppet-common"
     vagrant provision
 
