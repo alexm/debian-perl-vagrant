@@ -45,10 +45,24 @@ file_line {
     match   => 'DPT_PACKAGES=',
     require => File["${home}/.config/dpt.conf"];
 
-  'quilt for pkg-perl':
+  'quilt patches for pkg-perl':
     ensure  => present,
     path    => "${home}/.quiltrc",
-    line    => 'QUILT_PATCHES=debian/patches',
+    line    => "QUILT_PATCHES=\"debian/patches\"",
     match   => 'QUILT_PATCHES=',
+    require => File ["${home}/.quiltrc"];
+
+  'quilt diff args for pkg-perl':
+    ensure  => present,
+    path    => "${home}/.quiltrc",
+    line    => "QUILT_DIFF_ARGS=\"--no-timestamps --no-index -pab\"",
+    match   => 'QUILT_DIFF_ARGS=',
+    require => File ["${home}/.quiltrc"];
+
+  'quilt refresh args for pkg-perl':
+    ensure  => present,
+    path    => "${home}/.quiltrc",
+    line    => "QUILT_REFRESH_ARGS=\"--no-timestamps --no-index -pab\"",
+    match   => 'QUILT_REFRESH_ARGS=',
     require => File ["${home}/.quiltrc"];
 }

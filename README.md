@@ -67,9 +67,6 @@ Patching
 --------
 
     vagrant ssh
-    echo 'QUILT_PATCHES="debian/patches"'                       >> ~/.quiltrc
-    echo 'QUILT_DIFF_ARGS="--no-timestamps --no-index -pab"'    >> ~/.quiltrc
-    echo 'QUILT_REFRESH_ARGS="--no-timestamps --no-index -pab"' >> ~/.quiltrc
     cd ~/src/pkg-perl/packages/libfoo-bar-perl
     quilt new fix-something.patch
     quilt edit path/to/file
