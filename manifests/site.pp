@@ -35,6 +35,11 @@ file {
 
   "${home}/.quiltrc":
     ensure => file;
+
+  "${home}/.bash_aliases":
+    ensure  => file,
+    source  => '/vagrant/bash_aliases',
+    replace => false;
 }
 
 file_line {
