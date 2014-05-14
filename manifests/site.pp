@@ -40,6 +40,14 @@ file {
     ensure  => file,
     source  => '/vagrant/bash_aliases',
     replace => false;
+
+  "${home}/.mrconfig":
+    ensure  => file,
+    content => "[src/pkg-perl]\nchain = true\ncheckout = git clone ssh://git.debian.org/git/pkg-perl/meta.git pkg-perl\n";
+
+  "${home}/.mrtrust":
+    ensure  => file,
+    content => "~/src/pkg-perl/.mrconfig\n";
 }
 
 file_line {
