@@ -87,6 +87,15 @@ Building
     cd ~/src/pkg-perl/packages/libfoo-bar-perl
     pdebuild --pbuilder cowbuilder
 
+Upgrading
+---------
+
+    vagrant ssh
+    cd ~/src/pkg-perl/packages/libfoo-bar-perl
+    uscan --report
+    gbp-pull
+    gbp import-orig --uscan --pristine-tar
+
 Reading
 -------
 
