@@ -96,6 +96,13 @@ Upgrading
     gbp-pull
     gbp import-orig --uscan --pristine-tar
 
+Releasing
+---------
+
+    dch -r
+    git commit
+    git push
+
 Reading
 -------
 
