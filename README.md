@@ -77,7 +77,7 @@ Patching
     prove -e "patchedit check" debian/patches/fix-something.patch
     git add debian/patches
     git commit
-    git push
+    git push --all
 
 Building
 --------
@@ -101,7 +101,7 @@ Releasing
 
     dch -r
     git commit
-    git push
+    git push --all
 
 Reading
 -------
