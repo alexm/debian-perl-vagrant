@@ -17,13 +17,13 @@ file {
     mode   => '0700';
 
   "${home}/.ssh/id_rsa":
-    ensure  => link,
-    target  => '/vagrant/keys/alioth',
+    ensure  => file,
+    source  => '/vagrant/keys/alioth',
     require => File["${home}/.ssh"];
 
   "${home}/.ssh/id_rsa.pub":
-    ensure  => link,
-    target  => '/vagrant/keys/alioth.pub',
+    ensure  => file,
+    source  => '/vagrant/keys/alioth.pub',
     require => File["${home}/.ssh"];
 
   "${home}/.config":
