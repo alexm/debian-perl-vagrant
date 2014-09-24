@@ -33,7 +33,7 @@ Identifying
     git config --global user.email "your.name@example.org"
     echo 'export DEBFULLNAME="Your Name"'          >> ~/.bash_aliases
     echo 'export DEBEMAIL="your.name@example.org"' >> ~/.bash_aliases
-    echo 'Host git.debian.org'                     >> ~/.ssh/config
+    echo 'Host *.debian.org'                       >> ~/.ssh/config
     echo '    user your-alioth-username'           >> ~/.ssh/config
 
 Cloning
