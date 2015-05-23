@@ -103,6 +103,47 @@ Releasing
     git commit
     git push --all
 
+schroot
+-------
+
+Please, add a new hard drive (sdb) and then follow these steps:
+
+    sudo pvcreate /dev/sdb1
+    sudo vgcreate schroot /dev/sdb1
+    sudo lvcreate -n schroot-sid -L1G schroot
+    sudo mkfs.ext4 /dev/schroot/schroot-sid
+    sudo mount /dev/schroot/schroot-sid /mnt
+    sudo debootstrap sid /mnt http://httpredir.debian.org/debian
+    sudo umount /mnt
+    sudo apt-get install schroot
+    cat <<EOF | sudo tee -a /etc/schroot/chroot.d/sid.conf
+    [sid]
+    type=lvm-snapshot
+    device=/dev/schroot/schroot-sid
+    description=Debian sid
+    users=vagrant
+    root-users=vagrant
+    source-root-users=root
+    aliases=unstable
+    lvm-snapshot-options=--size 2G
+    EOF
+
+schroot-sid
+-----------
+
+    cat <<EOF | sudo schroot -c source:sid
+    echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/50schroot-sid
+    echo 'deb-src http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
+    apt-get install aptitude build-essential pbuilder devscripts fakeroot
+    apt-get clean
+    EOF
+
+autopkgtest
+-----------
+
+    sudo apt-get install pkg-perl-autopkgtest
+    adt-run libfoo-bar-perl --- schroot sid
+
 Reading
 -------
 
@@ -111,4 +152,6 @@ Reading
 * http://pkg-perl.alioth.debian.org/git.html
 * http://pkg-perl.alioth.debian.org/howto/quilt.html
 * http://pkg-perl.alioth.debian.org/tips.html
+* http://pkg-perl.alioth.debian.org/autopkgtest.html
+* http://www.enricozini.org/2008/tips/joys-of-schroot/
 
