@@ -108,14 +108,14 @@ schroot
 
 Please, add a new hard drive (sdb) and then follow these steps:
 
+    sudo apt-get install sbuild
     sudo pvcreate /dev/sdb1
     sudo vgcreate schroot /dev/sdb1
     sudo lvcreate -n schroot-sid -L1G schroot
     sudo mkfs.ext4 /dev/schroot/schroot-sid
     sudo mount /dev/schroot/schroot-sid /mnt
-    sudo debootstrap sid /mnt http://httpredir.debian.org/debian
+    sudo sbuild-createchroot sid /mnt http://httpredir.debian.org/debian
     sudo umount /mnt
-    sudo apt-get install schroot
     cat <<EOF | sudo tee -a /etc/schroot/chroot.d/sid.conf
     [sid]
     type=lvm-snapshot
@@ -133,10 +133,8 @@ schroot-sid
 
     cat <<EOF | sudo schroot -c source:sid
     echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/50schroot-sid
-    echo 'deb-src http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
-    apt-get install aptitude build-essential pbuilder devscripts fakeroot
-    apt-get clean
     EOF
+    sudo sbuild-update -udr sid
 
 autopkgtest
 -----------
