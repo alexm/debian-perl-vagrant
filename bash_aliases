@@ -111,3 +111,7 @@ dh-make-perl-dev() {
 }
 
 #----------------------------------------------------------------
+
+# Supersede LC_* with current LANG
+export LC_ALL=$LANG
+
