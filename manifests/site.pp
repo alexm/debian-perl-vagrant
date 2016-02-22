@@ -48,6 +48,10 @@ file {
   "${home}/.mrtrust":
     ensure  => file,
     content => "~/src/pkg-perl/.mrconfig\n";
+
+  "${home}/.reportbugrc":
+    ensure  => file,
+    content => "smtphost reportbug.debian.org\n";
 }
 
 file_line {
