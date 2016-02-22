@@ -103,7 +103,10 @@ Releasing
 
     dch -r
     git commit
+    git tag debian/${RELEASE}
     git push --all
+    git push --tags
+    (cd .. && dput ftp-master *.changes)
 
 schroot
 -------
