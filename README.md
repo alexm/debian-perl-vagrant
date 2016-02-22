@@ -93,8 +93,10 @@ Upgrading
     vagrant ssh
     cd ~/src/pkg-perl/packages/libfoo-bar-perl
     uscan --report
-    gbp-pull
-    gbp import-orig --uscan --pristine-tar
+    gbp pull
+    git checkout upstream
+    git checkout master
+    gbp import-orig --uscan --pristine-tar --upstream-branch=upstream
 
 Releasing
 ---------
