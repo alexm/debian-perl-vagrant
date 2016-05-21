@@ -3,8 +3,13 @@ class { 'apt': always_apt_update => true }
 Package { require => Class['apt'] }
 
 $present_packages = [
-  'pkg-perl-tools',
   'myrepos',
+  'pkg-perl-tools',
+  # pkg-perl-tools testing
+  'libtest-pod-perl',
+  'libtest-spelling-perl',
+  # Term::ReadLine cannot use defaults otherwise
+  'libterm-readline-perl-perl',
 ]
 
 package { $present_packages: ensure => present }
@@ -61,6 +66,13 @@ file_line {
     line    => "DPT_PACKAGES=${home}/src/pkg-perl/packages",
     match   => 'DPT_PACKAGES=',
     require => File["${home}/.config/dpt.conf"];
+
+  'dpt setup for running dpt from git':
+    ensure  => present,
+    path    => "${home}/.config/dpt.conf",
+    line    => 'DPT__SCRIPTS=$DPT_PACKAGES/pkg-perl-tools/scripts',
+    match   => 'DPT__SCRIPTS=',
+    require => File_line['dpt setup for pkg-perl'];
 
   'quilt patches for pkg-perl':
     ensure  => present,
