@@ -139,12 +139,13 @@ schroot-sid
     cat <<EOF | sudo schroot -c source:sid
     echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/50schroot-sid
     EOF
+    sudo schroot -c source:sid -- chmod 644 /etc/apt/apt.conf.d/50schroot-sid
     sudo sbuild-update -udr sid
 
 autopkgtest
 -----------
 
-    sudo apt-get install pkg-perl-autopkgtest
+    sudo apt-get install autopkgtest pkg-perl-autopkgtest
     adt-run libfoo-bar-perl --- schroot sid
 
 Reading
